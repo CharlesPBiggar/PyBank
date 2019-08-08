@@ -5,7 +5,8 @@ import csv
 #set the path
 election_data_path = "Resources/election_data.csv"
 
-rows = []
+#Variables
+count_of_votes = 0
 
 #instruct python to read csv file
 with open(election_data_path, newline='') as csvfile:
@@ -16,10 +17,10 @@ with open(election_data_path, newline='') as csvfile:
 
     #read each row of data
     for row in csvreader:
-        rows.append(row)
-
+        
         #The total number of votes cast
-
+        count_of_votes +=1
+        total_votes = count_of_votes
 
         #A complete list of candidates who received votes
 
@@ -31,7 +32,8 @@ with open(election_data_path, newline='') as csvfile:
 
 
         #The winner of the election based on popular vote.
-
+    
+    print(total_votes)
 
 #Export File
 
