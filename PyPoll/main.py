@@ -19,8 +19,7 @@ with open(election_data_path, newline='') as csvfile:
     for row in csvreader:
         
         #The total number of votes cast
-        count_of_votes +=1
-        total_votes = count_of_votes
+        
 
         #A complete list of candidates who received votes
 
@@ -32,29 +31,34 @@ with open(election_data_path, newline='') as csvfile:
 
 
         #The winner of the election based on popular vote.
-    
-    print(total_votes)
+
 
 #Export File
 
+    #Results
+    #print("Election Results")
+    #print("-----------------------")
+    #print("Total Votes: " + str(total_votes))
+    #print("-----------------------")
+    #print()
+    #print()
+    #print()
+    #print()
+    #print("-----------------------")
+    #print("Winner: " + election_winner)
+    #print("-----------------------")
 
-#output Layout
-#As an example, your analysis should look similar to the one below:
+
+
+
 #Election Results
-print("Election Results")
 #-------------------------
-print("-----------------------")
 #Total Votes: 3521001
-print("Total Votes: ")
 #-------------------------
-print("-----------------------")
 #Khan: 63.000% (2218231)
 #Correy: 20.000% (704200)
 #Li: 14.000% (492940)
 #O'Tooley: 3.000% (105630)
 #-------------------------
-print("-----------------------")
 #Winner: Khan
-print("Winner: ")
 #-------------------------
-print("-----------------------")
