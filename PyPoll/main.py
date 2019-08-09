@@ -41,13 +41,20 @@ with open(election_data_path, newline='') as csvfile:
 #output Layout
 #As an example, your analysis should look similar to the one below:
 #Election Results
+print("Election Results")
 #-------------------------
+print("-----------------------")
 #Total Votes: 3521001
+print("Total Votes: ")
 #-------------------------
+print("-----------------------")
 #Khan: 63.000% (2218231)
 #Correy: 20.000% (704200)
 #Li: 14.000% (492940)
 #O'Tooley: 3.000% (105630)
 #-------------------------
+print("-----------------------")
 #Winner: Khan
+print("Winner: ")
 #-------------------------
+print("-----------------------")

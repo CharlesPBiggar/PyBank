@@ -4,45 +4,47 @@ import csv
 
 #set the path
 budget_data_path = os.path.join("Resources", "budget_data.csv")
-print(budget_data_path)
-
-#Define Variables
-count_of_months = 0
-total_profits = 0
-row_index_total_profits = 1
 
 #instruct python to read csv file
 with open(budget_data_path, 'r',newline='') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
+    budget_data = csv.reader(csvfile, delimiter=',')
     
     #skip header
-    csv_header = next(csvreader)
-
+    csv_header = next(budget_data)
+    
+    profits = []
+    
     #read each row of data
-    for row in csvreader:
+    for row in budget_data:
         
-        #Find Total # of months included in data set
-        count_of_months +=1
-        total_months = count_of_months
+        #add values for Profits/Losses column to profits list
+        profits.append(int(row[1]))
     
-        #Find net total amount of "Profit/Losses"
-        float_total_profits = float(row[row_index_total_profits])
-        total_profits += float_total_profits
+    total_months = len(profits)
     
-        #Find average changes in "Profit/Losses"
+    #Find net total amount of "Profit/Losses"
+    total_profits = sum(profits)
+    
+    #Find month to month changes in "Profit/Losses"
+    change = [profits[i+1] - profits[i] for i in range(len(profits)-1)]
+    #Find average of changes 
+    avg_change = sum(change)/len(change)
+    avg_change_rounded = round(avg_change, 2)
+    
+    #Find the greatest increase in profits (date & amount)
+    greatest_increase = max(change)       
+    
+    #Find the greatest decrease in profits (date & amount)
+    greatest_decrease = min(change)
         
-
-        #Find the greatest increase in profits (date & amount)
-
-
-        #Find the greatest decrease in profits (date & amount)
-    
-    #Values
-    print(total_months)
-    print(total_profits)
-    
-    
-
+    #Results
+    print("Financial Analysis")
+    print("--------------------------")
+    print("Total Months: " + str(total_months))
+    print("Total Profits: $" + str(total_profits))
+    print("Average Change: $" + str(avg_change_rounded))
+    print("Greatest Increase in Profits: $" + str(greatest_increase))
+    print("Greatest Decrease in Profits: $" + str(greatest_decrease))
 
 #Export File 
 
