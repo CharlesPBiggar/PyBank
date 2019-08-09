@@ -38,22 +38,31 @@ with open(budget_data_path, 'r',newline='') as csvfile:
     greatest_decrease = min(change)
         
     #Results
+    print("---------------------------------------")
     print("Financial Analysis")
-    print("--------------------------")
+    print("---------------------------------------")
     print("Total Months: " + str(total_months))
     print("Total Profits: $" + str(total_profits))
     print("Average Change: $" + str(avg_change_rounded))
     print("Greatest Increase in Profits: $" + str(greatest_increase))
     print("Greatest Decrease in Profits: $" + str(greatest_decrease))
+    print("---------------------------------------")
 
-#Export File 
+# Export File
+# Specify the file to write to
+import os
+import csv
 
+output_path = os.path.join("Output", "Financial_Analysis.csv")
 
-#OUTPUT LAYOUT
-#Financial Analysis
-#----------------------------
-#Total Months: 86
-#Total: $38382578
-#Average  Change: $-2315.12
-#Greatest Increase in Profits: Feb-2012 ($1926159)
-#Greatest Decrease in Profits: Sep-2013 ($-2196167)
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w', newline='') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    # Write the Title row
+    csvwriter.writerow(["Total Months", "Total Profits", "Average Change", "Greatest Increase", "Greatest Decrease"])
+
+    # Write the Results row
+    csvwriter.writerow([str(total_months) + " Months", "$" + str(total_profits), "$" + str(avg_change_rounded), "$" + str(greatest_increase), "$" + str(greatest_decrease)])
