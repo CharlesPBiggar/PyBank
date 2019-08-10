@@ -19,7 +19,8 @@ with open(election_data_path, newline='') as csvfile:
     Khan_votes = []
     Correy_votes = []
     Li_votes = []
-    OTooley_votes = []    
+    OTooley_votes = []
+    election_winner = []    
     
     #read each row of data
     for row in csvreader:
@@ -40,47 +41,60 @@ with open(election_data_path, newline='') as csvfile:
                 
     #The total number of votes cast
     total_vote_count = len(total_votes)
-    print(total_vote_count)
+    
     #Calculating total votes for each candidate
     Khan_total = len(Khan_votes)
-    print(Khan_total)
+    
     Correy_total = len(Correy_votes)
-    print(Correy_total)
+    
     Li_total = len(Li_votes)
-    print(Li_total)
+    
     OTooley_total = len(OTooley_votes)
-    print(OTooley_total)
+    
 
     #Calculating the percentage of votes each candidate won
     pct_Khan = (Khan_total / total_vote_count) * 100
     pct_Khan_rounded = round(pct_Khan, 2)
-    print(pct_Khan_rounded)
+    
     pct_Correy = (Correy_total / total_vote_count) * 100
     pct_Correy_rounded = round(pct_Correy, 2)
-    print(pct_Correy_rounded)
+    
     pct_Li = (Li_total / total_vote_count) * 100
     pct_Li_rounded = round(pct_Li, 2)
-    print(pct_Li_rounded)
+    
     pct_OTooley = (OTooley_total / total_vote_count) * 100
-    pct_OTooley_rounded = round(pct_OTooley)
-    print(pct_OTooley_rounded)
+    pct_OTooley_rounded = round(pct_OTooley, 2)
+    
+
+    if (pct_Khan > pct_Correy) and (pct_Khan > pct_Li) and (pct_Khan > pct_OTooley):
+        election_winner.append("Khan")
+    elif (pct_Correy > pct_Khan) and (pct_Correy > pct_Li) and (pct_Correy > pct_OTooley):
+        election_winner.append("Correy")
+    elif (pct_Li > pct_Correy) and (pct_Li > pct_Khan) and (pct_Li > pct_OTooley):
+        election_winner.append("Li")
+    elif (pct_OTooley > pct_Correy) and (pct_OTooley > pct_Khan) and (pct_OTooley > pct_Li ):
+        election_winner.append("O'Tooley")
+    else:
+        election_winner.append("Undecided")
+    
     
 
     
 #Export File
 
     #Results
+    print("-------------------------")
     print("Election Results")
-    print("-----------------------")
+    print("-------------------------")
     print("Total Votes: " + str(total_vote_count))
-    print("-----------------------")
+    print("-------------------------")
     print("Khan: " + str(pct_Khan_rounded) + "% " + " (" + str(Khan_total) + ")")
     print("Correy: " + str(pct_Correy_rounded) + "% " + " (" + str(Correy_total) + ")")
     print("Li: " + str(pct_Li_rounded) + "% " + " (" + str(Li_total) + ")")
     print("O'Tooley: " + str(pct_OTooley_rounded) + "% " + " (" + str(OTooley_total) + ")")
-    print("-----------------------")
-    #print("Winner: " + str(election_winner))
-    print("-----------------------")
+    print("-------------------------")
+    print("Winner: " + (election_winner[0]))
+    print("-------------------------")
 
 
 
