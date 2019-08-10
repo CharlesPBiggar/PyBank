@@ -76,11 +76,6 @@ with open(election_data_path, newline='') as csvfile:
         election_winner.append("O'Tooley")
     else:
         election_winner.append("Undecided")
-    
-    
-
-    
-#Export File
 
     #Results
     print("-------------------------")
@@ -97,15 +92,33 @@ with open(election_data_path, newline='') as csvfile:
     print("-------------------------")
 
 
+# Export File
+# Specify the file to write to
+import os
+import csv
 
+output_path = os.path.join("Output", "Election_Results.csv")
 
-#Election Results
-#-------------------------
-#Total Votes: 3521001
-#-------------------------
-#Khan: 63.000% (2218231)
-#Correy: 20.000% (704200)
-#Li: 14.000% (492940)
-#O'Tooley: 3.000% (105630)
-#-------------------------
-#Winner: Khan
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w', newline='') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
+    #Write Title Row
+    csvwriter.writerow(["Election Results"])
+    # Write header row
+    csvwriter.writerow([" ", "% Votes Won", "Vote Count"]) 
+    # Write the Khan row
+    csvwriter.writerow(["Khan", str(pct_Khan_rounded) + "%", str(Khan_total)])
+    # Write the Correy row
+    csvwriter.writerow(["Correy", str(pct_Correy_rounded) + "%", str(Correy_total)])
+    # Write the Li row
+    csvwriter.writerow(["Li", str(pct_Li_rounded) + "%", str(Li_total)])
+    # Write the O'Tooley Row
+    csvwriter.writerow(["O'Tooley", str(pct_OTooley_rounded) + "%", str(OTooley_total)])
+    # Write the Total Votes row
+    csvwriter.writerow(["Total Votes" ," " , str(total_vote_count)])
+    #Black row to seperate individual results from final results
+    csvwriter.writerow([" "])
+    # Write the results row
+    csvwriter.writerow(["Winner", str(election_winner[0])])
