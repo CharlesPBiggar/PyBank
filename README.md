@@ -1,4 +1,4 @@
-<b> PyBank </b> <br/>
+# PyBank
 Utilizing Python to Analyze Company Financials over 3 Year Period <br/>
 _____________________________________
 <b> PyBank </b> <br/>
